@@ -70,3 +70,4 @@ declare const _default: {
     ChineseNumberFormat: typeof ChineseNumberFormat;
 };
 export default _default;
+//# sourceMappingURL=index.d.ts.map

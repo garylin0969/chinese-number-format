@@ -1,15 +1,30 @@
 {
     "compilerOptions": {
-        "target": "es2016",
-        "module": "commonjs",
-        "outDir": "./dist/cjs",
-        "esModuleInterop": true,
-        "forceConsistentCasingInFileNames": true,
-        "strict": true,
-        "moduleResolution": "node",
-        "declaration": true,
-        "skipLibCheck": true
+        /* 語言與環境設定 */
+        "target": "ES2020",             // 編譯出的 JavaScript 版本 (支援 Node.js 14+ 的特性)
+        "lib": ["ES2020"],              // 引入的型別定義庫 (包含 ES2020 的語法支援)
+        "module": "commonjs",           // 模組系統 (Node.js 預設使用 CommonJS)
+        "moduleResolution": "node",     // 模組解析策略 (依循 Node.js 的方式查找模組)
+        
+        /* 嚴格類型檢查 */
+        "strict": true,                 // 啟用所有嚴格類型檢查選項 (包含 noImplicitAny, strictNullChecks 等)
+        "noImplicitOverride": true,     // 繼承類別覆寫方法時，必須加上 'override' 關鍵字 (避免意外覆寫)
+        "noImplicitReturns": true,      // 函式的所有路徑都必須有回傳值 (避免意外回傳 undefined)
+        
+        /* 模組互通性 */
+        "esModuleInterop": true,        // 允許以 ES Module 語法匯入 CommonJS 模組 (如 import React from 'react')
+        "forceConsistentCasingInFileNames": true, // 強制檔案名稱大小寫一致 (避免 Windows/macOS/Linux 行為不一致)
+        "resolveJsonModule": true,      // 允許匯入 .json 檔案
+        "isolatedModules": true,        // 確保每個檔案都能獨立編譯 (對 Babel/SWC 等工具友善)
+        "skipLibCheck": true,           // 跳過 .d.ts 檔案的類型檢查 (加快編譯速度)
+        
+        /* 輸出設定 */
+        "outDir": "./dist/cjs",         // 編譯後的檔案輸出目錄
+        "declaration": true,            // 產生 .d.ts 類型定義檔案 (供其他專案使用)
+        "declarationMap": true,         // 產生 .d.ts.map (讓編輯器能跳轉回原始 TS 程式碼)
+        "sourceMap": true,              // 產生 .js.map (支援 Debugging，讓錯誤訊息指向原始 TS 程式碼)
+        "removeComments": false         // 保留註解 (不從輸出的 JS 中移除)
     },
-    "include": ["src/**/*.ts"],
-    "exclude": ["node_modules", "test"]
+    "include": ["src/**/*.ts"],         // 指定需要編譯的檔案路徑
+    "exclude": ["node_modules", "test", "dist"] // 排除不需要編譯的目錄
 }

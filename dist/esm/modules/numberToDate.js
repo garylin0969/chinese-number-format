@@ -74,3 +74,4 @@ export function dateToChinese(date, options = {}) {
     }
     return result;
 }
+//# sourceMappingURL=numberToDate.js.map

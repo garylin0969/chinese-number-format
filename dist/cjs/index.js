@@ -53,3 +53,4 @@ exports.default = {
     numberToFraction: numberToFraction_1.default,
     ChineseNumberFormat: ChineseNumberFormat_1.default,
 };
+//# sourceMappingURL=index.js.map

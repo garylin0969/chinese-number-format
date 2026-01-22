@@ -52,3 +52,4 @@ export declare const CHINESE_TO_NUMBER_MAP: Map<string, number>;
  * key: 單位字元 (如 '萬'), value: 權重數值 (如 10000)
  */
 export declare const UNIT_MAP: Map<string, number>;
+//# sourceMappingURL=constants.d.ts.map

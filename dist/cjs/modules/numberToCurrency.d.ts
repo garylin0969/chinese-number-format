@@ -20,3 +20,4 @@ import { CurrencyOptions } from '../types';
  */
 declare function numberToCurrency(num: number, options?: CurrencyOptions): string;
 export default numberToCurrency;
+//# sourceMappingURL=numberToCurrency.d.ts.map

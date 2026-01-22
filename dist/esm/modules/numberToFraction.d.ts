@@ -19,3 +19,4 @@ import { FractionOptions } from '../types';
  */
 declare function numberToFraction(val: number | string, options?: FractionOptions): string;
 export default numberToFraction;
+//# sourceMappingURL=numberToFraction.d.ts.map

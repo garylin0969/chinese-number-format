@@ -159,3 +159,4 @@ function numberToChinese(num, options = {}) {
     return result + decimalResult;
 }
 exports.default = numberToChinese;
+//# sourceMappingURL=numberToChinese.js.map

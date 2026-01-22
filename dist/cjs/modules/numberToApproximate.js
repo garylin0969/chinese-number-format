@@ -53,3 +53,4 @@ function numberToChineseApproximate(num, options = {}) {
     return num.toString();
 }
 exports.default = numberToChineseApproximate;
+//# sourceMappingURL=numberToApproximate.js.map

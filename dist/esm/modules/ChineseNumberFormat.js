@@ -18,19 +18,25 @@ export class ChineseNumberFormat {
      * @param {ChineseNumberOptions} options - 預設選項。
      */
     constructor(options = {}) {
-        this.defaultOptions = Object.assign({ locale: 'zh-TW' }, options);
+        this.defaultOptions = {
+            locale: 'zh-TW',
+            ...options,
+        };
     }
     /**
      * 將數字轉換為中文讀法。
      */
     toChinese(num, options) {
-        return numberToChinese(num, Object.assign(Object.assign({}, this.defaultOptions), options));
+        return numberToChinese(num, { ...this.defaultOptions, ...options });
     }
     /**
      * 將數字轉換為中文貨幣格式。
      */
     toCurrency(num, options) {
-        return numberToCurrency(num, Object.assign({ locale: this.defaultOptions.locale }, options));
+        return numberToCurrency(num, {
+            locale: this.defaultOptions.locale,
+            ...options,
+        });
     }
     /**
      * 反向解析：將中文數字字串轉換為數值。
@@ -42,7 +48,10 @@ export class ChineseNumberFormat {
      * 數字縮寫。
      */
     toApproximate(num, options) {
-        return numberToChineseApproximate(num, Object.assign({ locale: this.defaultOptions.locale }, options));
+        return numberToChineseApproximate(num, {
+            locale: this.defaultOptions.locale,
+            ...options,
+        });
     }
     /**
      * 年份轉換。
@@ -56,13 +65,20 @@ export class ChineseNumberFormat {
      * 日期轉換。
      */
     toDate(date, options) {
-        return dateToChinese(date, Object.assign({ locale: this.defaultOptions.locale }, options));
+        return dateToChinese(date, {
+            locale: this.defaultOptions.locale,
+            ...options,
+        });
     }
     /**
      * 分數與百分比轉換。
      */
     toFraction(val, options) {
-        return numberToFraction(val, Object.assign({ locale: this.defaultOptions.locale }, options));
+        return numberToFraction(val, {
+            locale: this.defaultOptions.locale,
+            ...options,
+        });
     }
 }
 export default ChineseNumberFormat;
+//# sourceMappingURL=ChineseNumberFormat.js.map

@@ -20,3 +20,4 @@ import { ChineseNumberOptions } from '../types';
  */
 declare function numberToChinese(num: number, options?: ChineseNumberOptions): string;
 export default numberToChinese;
+//# sourceMappingURL=numberToChinese.d.ts.map

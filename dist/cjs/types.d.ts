@@ -105,3 +105,4 @@ export interface DateOptions {
      */
     format?: 'date' | 'day' | 'time';
 }
+//# sourceMappingURL=types.d.ts.map

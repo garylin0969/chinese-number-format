@@ -1,0 +1,1 @@
+{"version":3,"file":"numberToDate.d.ts","sourceRoot":"","sources":["../../../src/modules/numberToDate.ts"],"names":[],"mappings":"AAAA;;;GAGG;AAEH,OAAO,EAAE,aAAa,EAAE,WAAW,EAAE,MAAM,UAAU,CAAC;AAGtD;;;;;;;;;;GAUG;AACH,wBAAgB,YAAY,CAAC,IAAI,EAAE,MAAM,EAAE,MAAM,GAAE,aAAuB,GAAG,MAAM,CAElF;AAED;;;;;;;;;;;GAWG;AACH,wBAAgB,aAAa,CAAC,IAAI,EAAE,IAAI,EAAE,OAAO,GAAE,WAAgB,GAAG,MAAM,CAoD3E"}

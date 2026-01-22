@@ -20,3 +20,4 @@
  */
 declare function chineseToNumber(str: string): number;
 export default chineseToNumber;
+//# sourceMappingURL=chineseToNumber.d.ts.map

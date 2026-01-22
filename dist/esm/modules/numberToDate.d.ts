@@ -28,3 +28,4 @@ export declare function numberToYear(year: number, locale?: ChineseLocale): stri
  * dateToChinese(new Date(2024, 0, 22)); // '二零二四年一月二十二日'
  */
 export declare function dateToChinese(date: Date, options?: DateOptions): string;
+//# sourceMappingURL=numberToDate.d.ts.map

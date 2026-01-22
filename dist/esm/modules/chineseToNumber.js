@@ -160,3 +160,4 @@ function chineseToNumber(str) {
     return total + decimalVal;
 }
 export default chineseToNumber;
+//# sourceMappingURL=chineseToNumber.js.map

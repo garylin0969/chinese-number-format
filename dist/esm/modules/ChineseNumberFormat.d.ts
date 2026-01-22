@@ -44,3 +44,4 @@ export declare class ChineseNumberFormat {
     toFraction(val: number | string, options?: FractionOptions): string;
 }
 export default ChineseNumberFormat;
+//# sourceMappingURL=ChineseNumberFormat.d.ts.map

@@ -55,3 +55,4 @@ function numberToFraction(val, options = {}) {
     return '';
 }
 export default numberToFraction;
+//# sourceMappingURL=numberToFraction.js.map

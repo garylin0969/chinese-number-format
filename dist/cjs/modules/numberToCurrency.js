@@ -66,3 +66,4 @@ function numberToCurrency(num, options = {}) {
     return result;
 }
 exports.default = numberToCurrency;
+//# sourceMappingURL=numberToCurrency.js.map

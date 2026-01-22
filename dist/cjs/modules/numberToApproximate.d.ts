@@ -18,3 +18,4 @@ import { ApproximateOptions } from '../types';
  */
 declare function numberToChineseApproximate(num: number, options?: ApproximateOptions): string;
 export default numberToChineseApproximate;
+//# sourceMappingURL=numberToApproximate.d.ts.map

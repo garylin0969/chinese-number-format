@@ -24,19 +24,25 @@ class ChineseNumberFormat {
      * @param {ChineseNumberOptions} options - 預設選項。
      */
     constructor(options = {}) {
-        this.defaultOptions = Object.assign({ locale: 'zh-TW' }, options);
+        this.defaultOptions = {
+            locale: 'zh-TW',
+            ...options,
+        };
     }
     /**
      * 將數字轉換為中文讀法。
      */
     toChinese(num, options) {
-        return (0, numberToChinese_1.default)(num, Object.assign(Object.assign({}, this.defaultOptions), options));
+        return (0, numberToChinese_1.default)(num, { ...this.defaultOptions, ...options });
     }
     /**
      * 將數字轉換為中文貨幣格式。
      */
     toCurrency(num, options) {
-        return (0, numberToCurrency_1.default)(num, Object.assign({ locale: this.defaultOptions.locale }, options));
+        return (0, numberToCurrency_1.default)(num, {
+            locale: this.defaultOptions.locale,
+            ...options,
+        });
     }
     /**
      * 反向解析：將中文數字字串轉換為數值。
@@ -48,7 +54,10 @@ class ChineseNumberFormat {
      * 數字縮寫。
      */
     toApproximate(num, options) {
-        return (0, numberToApproximate_1.default)(num, Object.assign({ locale: this.defaultOptions.locale }, options));
+        return (0, numberToApproximate_1.default)(num, {
+            locale: this.defaultOptions.locale,
+            ...options,
+        });
     }
     /**
      * 年份轉換。
@@ -62,14 +71,21 @@ class ChineseNumberFormat {
      * 日期轉換。
      */
     toDate(date, options) {
-        return (0, numberToDate_1.dateToChinese)(date, Object.assign({ locale: this.defaultOptions.locale }, options));
+        return (0, numberToDate_1.dateToChinese)(date, {
+            locale: this.defaultOptions.locale,
+            ...options,
+        });
     }
     /**
      * 分數與百分比轉換。
      */
     toFraction(val, options) {
-        return (0, numberToFraction_1.default)(val, Object.assign({ locale: this.defaultOptions.locale }, options));
+        return (0, numberToFraction_1.default)(val, {
+            locale: this.defaultOptions.locale,
+            ...options,
+        });
     }
 }
 exports.ChineseNumberFormat = ChineseNumberFormat;
 exports.default = ChineseNumberFormat;
+//# sourceMappingURL=ChineseNumberFormat.js.map

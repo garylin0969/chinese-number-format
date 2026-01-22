@@ -72,3 +72,4 @@ export default {
     numberToFraction,
     ChineseNumberFormat,
 };
+//# sourceMappingURL=index.js.map

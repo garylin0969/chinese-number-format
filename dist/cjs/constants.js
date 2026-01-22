@@ -86,3 +86,4 @@ bigUnitsMap.forEach((units) => {
         exports.UNIT_MAP.set(char, value);
     });
 });
+//# sourceMappingURL=constants.js.map
