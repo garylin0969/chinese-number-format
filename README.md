@@ -112,6 +112,9 @@ console.log(twFormatter.toChinese(123)); // "壹佰貳拾參"
 ```typescript
 numberToChinese(10010); // "一萬零一十"
 numberToChinese(123, { locale: 'zh-CN' }); // "一百二十三"
+numberToChinese(123, { finance: true }); // "壹佰貳拾參"
+numberToChinese(10, { tenMin: false }); // "一十"
+numberToChinese(2024, { units: false }); // "二零二四"
 ```
 
 #### `numberToCurrency(num, options?)`
@@ -122,6 +125,12 @@ numberToChinese(123, { locale: 'zh-CN' }); // "一百二十三"
 | `num` | `number` | - | 金額 |
 | `options.currencyUnit` | `string` | `'元'` | 貨幣單位 |
 | `options.useIntUnit` | `boolean` | `true` | 整數結尾是否加「整」 |
+
+```typescript
+numberToCurrency(1000); // "壹仟元整"
+numberToCurrency(1234.56, { currencyUnit: '圓' }); // "壹仟貳佰參拾肆圓伍角陸分"
+numberToCurrency(500, { useIntUnit: false }); // "伍佰元"
+```
 
 #### `chineseToNumber(str)`
 將中文數字字串解析為數值。
@@ -148,6 +157,7 @@ chineseToNumber("三點一四"); // 3.14
 ```typescript
 numberToChineseApproximate(12345); // "1.2萬"
 numberToChineseApproximate(12345, { precision: 2 }); // "1.23萬"
+numberToChineseApproximate(12345, { locale: 'zh-CN' }); // "1.2万"
 ```
 
 #### `numberToYear(year, locale?)`
