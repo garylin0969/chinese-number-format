@@ -160,7 +160,7 @@ numberToChineseApproximate(12345, { precision: 2 }); // "1.23萬"
 
 ```typescript
 numberToYear(2024); // "二零二四"
-numberToYear(1999); // "一九九九"
+numberToYear(2024, 'zh-CN'); // "二零二四" (簡體地區)
 ```
 
 #### `dateToChinese(date, options?)`
@@ -175,7 +175,7 @@ numberToYear(1999); // "一九九九"
 ```typescript
 const d = new Date('2024-01-22T12:30:00');
 dateToChinese(d); // "二零二四年一月二十二日"
-dateToChinese(d, { format: 'day' }); // "二零二四年一月二十二日 星期一"
+dateToChinese(d, { locale: 'zh-CN', format: 'day' }); // "二零二四年一月二十二日 星期一"
 dateToChinese(d, { format: 'time' }); // "二零二四年一月二十二日 十二點三十分"
 ```
 
@@ -190,7 +190,8 @@ dateToChinese(d, { format: 'time' }); // "二零二四年一月二十二日 十�
 
 ```typescript
 numberToFraction("1/2"); // "二分之一"
-numberToFraction("75%"); // "百分之七十五"
+numberToFraction("75%", { locale: 'zh-CN' }); // "百分之七十五"
+numberToFraction(0.5, { type: 'percentage' }); // "百分之五十"
 ```
 
 ---
