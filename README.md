@@ -126,17 +126,72 @@ numberToChinese(123, { locale: 'zh-CN' }); // "一百二十三"
 #### `chineseToNumber(str)`
 將中文數字字串解析為數值。
 
+| 參數 | 類型 | 說明 |
+| --- | --- | --- |
+| `str` | `string` | 中文數字字串 |
+
+```typescript
+chineseToNumber("一萬二"); // 12000
+chineseToNumber("參佰伍拾"); // 350
+chineseToNumber("三點一四"); // 3.14
+```
+
 #### `numberToChineseApproximate(num, options?)`
 將大數字轉換為簡短的近似值（如觀看次數）。
 
+| 參數 | 類型 | 預設值 | 說明 |
+| --- | --- | --- | --- |
+| `num` | `number` | - | 輸入數字 |
+| `options.locale` | `'zh-TW' \| 'zh-CN'` | `'zh-TW'` | 地區 |
+| `options.precision` | `number` | `1` | 小數點後保留位數 |
+
+```typescript
+numberToChineseApproximate(12345); // "1.2萬"
+numberToChineseApproximate(12345, { precision: 2 }); // "1.23萬"
+```
+
 #### `numberToYear(year, locale?)`
-將年份數字轉換為中文讀法。
+將年份數字轉換為中文讀法（逐字讀出）。
+
+| 參數 | 類型 | 預設值 | 說明 |
+| --- | --- | --- | --- |
+| `year` | `number \| string` | - | 年份 |
+| `locale` | `'zh-TW' \| 'zh-CN'` | `'zh-TW'` | 地區 |
+
+```typescript
+numberToYear(2024); // "二零二四"
+numberToYear(1999); // "一九九九"
+```
 
 #### `dateToChinese(date, options?)`
-將 `Date` 物件轉換為中文日期。
+將 `Date` 物件轉換為中文日期表示。
+
+| 參數 | 類型 | 預設值 | 說明 |
+| --- | --- | --- | --- |
+| `date` | `Date` | - | 日期物件 |
+| `options.locale` | `'zh-TW' \| 'zh-CN'` | `'zh-TW'` | 地區 |
+| `options.format` | `'date' \| 'day' \| 'time'` | `'date'` | 格式 ('date': 日期, 'day': 含星期, 'time': 含時間) |
+
+```typescript
+const d = new Date('2024-01-22T12:30:00');
+dateToChinese(d); // "二零二四年一月二十二日"
+dateToChinese(d, { format: 'day' }); // "二零二四年一月二十二日 星期一"
+dateToChinese(d, { format: 'time' }); // "二零二四年一月二十二日 十二點三十分"
+```
 
 #### `numberToFraction(val, options?)`
 分數或百分比轉換。
+
+| 參數 | 類型 | 預設值 | 說明 |
+| --- | --- | --- | --- |
+| `val` | `string` | - | 分數 ("1/2") 或 百分比 ("50%") 字串 |
+| `options.locale` | `'zh-TW' \| 'zh-CN'` | `'zh-TW'` | 地區 |
+| `options.type` | `'fraction' \| 'percentage'` | auto | 強制指定類型，若不填則自動判斷 |
+
+```typescript
+numberToFraction("1/2"); // "二分之一"
+numberToFraction("75%"); // "百分之七十五"
+```
 
 ---
 
