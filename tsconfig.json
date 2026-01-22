@@ -2,16 +2,14 @@
     "compilerOptions": {
         "target": "es2016",
         "module": "commonjs",
-        "outDir": "./dist", // 指定編譯後的 JavaScript 文件輸出目錄為 dist
+        "outDir": "./dist/cjs",
         "esModuleInterop": true,
         "forceConsistentCasingInFileNames": true,
         "strict": true,
         "moduleResolution": "node",
-        "declaration": true, // 生成 .d.ts
+        "declaration": true,
         "skipLibCheck": true
     },
-    "include": [
-        "src/**/*.ts" // 設定 TypeScript 源代碼的位置
-    ],
-    "exclude": ["node_modules"] // 不需要編譯的文件
+    "include": ["src/**/*.ts"],
+    "exclude": ["node_modules", "test"]
 }

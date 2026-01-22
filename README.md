@@ -1,135 +1,155 @@
-# chinese-number-format
+# Chinese Number Format
 
-[![NPM version][npm-version-image]][npm-url]
+[![npm version](https://img.shields.io/npm/v/chinese-number-format.svg)](https://www.npmjs.com/package/chinese-number-format)
+[![License](https://img.shields.io/npm/l/chinese-number-format.svg)](https://github.com/garylin0969/chinese-number-format/blob/main/LICENSE)
 
-> A utility for converting between Chinese numerals and Arabic numbers, supporting both Traditional (zh-TW) and Simplified Chinese (zh-CN).
+強大且輕量的中文數字轉換函式庫。支援繁體/簡體中文、金融大寫、貨幣格式化、日期轉換、數字縮寫等多種場景。
 
-## Features
+A powerful and lightweight library for converting numbers to Chinese numerals. Supports Traditional/Simplified Chinese, financial uppercase, currency formatting, date conversion, and number approximation.
 
--   Convert numbers to Chinese characters
--   Convert numbers to Chinese with units (up to 載/载)
--   Convert numbers to approximate Chinese with units
--   Convert Chinese characters to numbers
--   Convert to uppercase Chinese numerals
--   Support both Traditional Chinese (zh-TW) and Simplified Chinese (zh-CN)
+## ✨ 特色 (Features)
 
-## Installation
+*   🚀 **全方位轉換**：支援一般數字、金融大寫、貨幣、日期、年份、分數、百分比。
+*   💡 **智慧解析**：支援將中文數字（包含口語縮寫如「一萬二」）反向解析為數值。
+*   🌏 **繁簡支援**：完整支援 `zh-TW` (繁體) 與 `zh-CN` (簡體)，無論輸入或輸出。
+*   🛡️ **安全設計**：提供 `ChineseNumberFormat` 類別，可建立獨立設定的實例，完美支援 SSR 與多語系環境。
+*   ⚡ **高效輕量**：零依賴 (Zero Dependency)。
+*   🛠️ **通用支援**：
+    *   **TypeScript**: 內建完整型別定義。
+    *   **Node.js**: 支援 CommonJS (`require`) 與 ES Modules (`import`)。
+    *   **Browser**: 支援原生 ES Modules，可直接在瀏覽器使用。
+    *   **Frameworks**: 完美支援 React, Vue, Next.js, Angular, Svelte 等。
+
+## 📦 安裝 (Installation)
 
 ```bash
 npm install chinese-number-format
+# 或
+yarn add chinese-number-format
+# 或
+pnpm add chinese-number-format
 ```
 
-## API Reference
+## 💻 使用方式 (Usage)
 
-### Basic Conversion
+### 1. 基礎函式 (Functional API)
+適合簡單、無狀態的使用場景。
 
-```js
-import { toChinese } from 'chinese-number-format';
+```typescript
+import { 
+  numberToChinese, 
+  numberToCurrency, 
+  chineseToNumber 
+} from 'chinese-number-format';
 
-// Basic number to Chinese
-toChinese(1234567890, 'zh-TW'); // => '一二三四五六七八九零'
-toChinese(9876543210, 'zh-CN'); // => '九八七六五四三二一零'
+console.log(numberToChinese(12345)); 
+// Output: "一萬二千三百四十五"
+
+console.log(numberToCurrency(1234.50, { locale: 'zh-CN' })); 
+// Output: "壹仟贰佰叁拾肆元伍角"
 ```
 
-### Units Conversion
+### 2. 類別實例 (Class API) - 推薦 ⭐
+適合需要統一設定、多語系切換或 SSR 環境。
 
-```js
-import { toChineseWithUnits } from 'chinese-number-format';
+```typescript
+import { ChineseNumberFormat } from 'chinese-number-format';
 
-// Number to Chinese with units
-toChineseWithUnits(1234567890, 'zh-TW'); // => '一十二億三千四百五十六萬七千八百九十'
-toChineseWithUnits(123.45, 'zh-CN'); // => '一百二十三点四五'
+// 建立一個簡體中文的格式化器
+const cnFormatter = new ChineseNumberFormat({ locale: 'zh-CN' });
+
+console.log(cnFormatter.toChinese(123)); // "一百二十三" (簡體)
+console.log(cnFormatter.toCurrency(100)); // "壹佰元整" (簡體)
+
+// 建立一個繁體中文的格式化器
+const twFormatter = new ChineseNumberFormat({ locale: 'zh-TW', finance: true });
+console.log(twFormatter.toChinese(123)); // "壹佰貳拾參"
 ```
 
-### Approximate Numbers
+### 3. 瀏覽器原生 (Browser Native)
 
-```js
-import { toChineseApproximate } from 'chinese-number-format';
+可以直接透過 CDN 引入 (使用 ES Modules 版本)：
 
-// Convert to approximate values
-toChineseApproximate(12345); // => '一點二萬'
-toChineseApproximate(1234567890, { locale: 'zh-CN' }); // => '十二点三亿'
-toChineseApproximate(12345, { precision: 2 }); // => '一點二三萬'
+```html
+<script type="module">
+  import { ChineseNumberFormat } from 'https://unpkg.com/chinese-number-format@^2.0.0/dist/esm/index.js';
+  
+  const formatter = new ChineseNumberFormat();
+  console.log(formatter.toChinese(12345));
+</script>
 ```
 
-### Chinese to Number
+## 📚 API 文件 (API Documentation)
 
-```js
-import { toNumber } from 'chinese-number-format';
+### `ChineseNumberFormat` Class
 
-// Chinese to number
-toNumber('一二三四五六七八九零'); // => 1234567890
-toNumber('一二三點四五'); // => 123.45
+| 方法 | 說明 |
+| --- | --- |
+| `constructor(options?)` | 建立實例，可傳入預設選項 (如 `{ locale: 'zh-CN' }`) |
+| `toChinese(num, options?)` | 數字轉中文 |
+| `toCurrency(num, options?)` | 數字轉貨幣 |
+| `toNumber(str)` | 中文轉數字 |
+| `toApproximate(num, options?)` | 數字縮寫 |
+| `toYear(year, locale?)` | 年份轉換 |
+| `toDate(date, options?)` | 日期轉換 |
+| `toFraction(val, options?)` | 分數轉換 |
+
+---
+
+### 獨立函式 (Functional Exports)
+
+#### `numberToChinese(num, options?)`
+將數字轉換為中文讀法。
+
+| 參數 | 類型 | 預設值 | 說明 |
+| --- | --- | --- | --- |
+| `num` | `number` | - | 輸入數字 |
+| `options.locale` | `'zh-TW' \| 'zh-CN'` | `'zh-TW'` | 地區 (繁/簡) |
+| `options.finance` | `boolean` | `false` | 是否使用金融大寫 (壹貳參) |
+| `options.units` | `boolean` | `true` | 是否顯示單位 (十百千)。設為 `false` 可轉為純數字讀法 (如電話) |
+| `options.tenMin` | `boolean` | `true` | 是否省略首位的「一十」(如 10 -> 十) |
+
+```typescript
+numberToChinese(10010); // "一萬零一十"
+numberToChinese(123, { locale: 'zh-CN' }); // "一百二十三"
 ```
 
-### Uppercase Conversion
+#### `numberToCurrency(num, options?)`
+將數字轉換為中文貨幣格式（自動四捨五入至小數第二位）。
 
-```js
-import { toUpperCase } from 'chinese-number-format';
+| 參數 | 類型 | 預設值 | 說明 |
+| --- | --- | --- | --- |
+| `num` | `number` | - | 金額 |
+| `options.currencyUnit` | `string` | `'元'` | 貨幣單位 |
+| `options.useIntUnit` | `boolean` | `true` | 整數結尾是否加「整」 |
 
-// Convert to uppercase Chinese numerals
-toUpperCase('一二三', 'zh-TW'); // => '壹貳參'
-toUpperCase('123', 'zh-CN'); // => '壹贰叁'
-```
+#### `chineseToNumber(str)`
+將中文數字字串解析為數值。
 
-### Month Conversion
+#### `numberToChineseApproximate(num, options?)`
+將大數字轉換為簡短的近似值（如觀看次數）。
 
-```js
-import { toChineseMonth } from 'chinese-number-format';
+#### `numberToYear(year, locale?)`
+將年份數字轉換為中文讀法。
 
-// Convert to Chinese month
-toChineseMonth(1); // => '一月'
-toChineseMonth(1, { format: 'traditional' }); // => '正月'
-toChineseMonth(12, { locale: 'zh-CN', format: 'traditional' }); // => '腊月'
-```
+#### `dateToChinese(date, options?)`
+將 `Date` 物件轉換為中文日期。
 
-## API Details
+#### `numberToFraction(val, options?)`
+分數或百分比轉換。
 
-### toChinese(number, locale?)
+---
 
--   `number`: Number to convert
--   `locale`: 'zh-TW' | 'zh-CN' (Default: 'zh-TW')
--   Returns: String
+## 🤝 貢獻 (Contributing)
 
-### toChineseWithUnits(number, locale?)
+歡迎提交 Issue 或 Pull Request！
 
--   `number`: Number to convert
--   `locale`: 'zh-TW' | 'zh-CN' (Default: 'zh-TW')
--   Returns: String
+1. Fork 本專案
+2. 建立您的 Feature 分支 (`git checkout -b feature/AmazingFeature`)
+3. 提交變更 (`git commit -m 'Add some AmazingFeature'`)
+4. 推送到分支 (`git push origin feature/AmazingFeature`)
+5. 開啟 Pull Request
 
-### toChineseApproximate(number, options?)
+## 📄 授權 (License)
 
--   `number`: Number to convert
--   `options`:
-    -   `locale`: 'zh-TW' | 'zh-CN' (Default: 'zh-TW')
-    -   `precision`: number (Default: 1)
--   Returns: String
-
-### toNumber(chinese)
-
--   `chinese`: Chinese numeral string
--   Returns: Number
-
-### toUpperCase(input, locale?)
-
--   `input`: String to convert
--   `locale`: 'zh-TW' | 'zh-CN' (Default: 'zh-TW')
--   Returns: String
-
-### toChineseMonth(month, options?)
-
--   `month`: Number (1-12)
--   `options`:
-    -   `locale`: 'zh-TW' | 'zh-CN' (Default: 'zh-TW')
-    -   `format`: 'traditional' | 'simple' (Default: 'simple')
--   Returns: String
-
-## Notes
-
--   Default locale is zh-TW (Traditional Chinese)
--   Maximum supported unit for toChineseWithUnits is 載/载 (10^44)
--   toNumber does not support conversion of numbers with units
--   toChineseApproximate supports automatic unit selection for large numbers
-
-[npm-url]: https://www.npmjs.com/package/chinese-number-format
-[npm-version-image]: https://img.shields.io/npm/v/chinese-number-format.svg?style=flat
+MIT © [GaryLin](https://github.com/garylin0969)

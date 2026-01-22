@@ -1,44 +1,72 @@
 {
     "name": "chinese-number-format",
-    "version": "1.1.0",
-    "description": "中文數字轉換Chinese numeral conversion",
-    "main": "dist/index.js",
-    "types": "dist/index.d.ts",
+    "version": "2.0.0",
+    "description": "Powerful Chinese numeral conversion library (Normal, Financial, Currency, Date, Fraction)",
+    "main": "dist/cjs/index.js",
+    "module": "dist/esm/index.js",
+    "types": "dist/cjs/index.d.ts",
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./dist/esm/index.d.ts",
+                "default": "./dist/esm/index.js"
+            },
+            "require": {
+                "types": "./dist/cjs/index.d.ts",
+                "default": "./dist/cjs/index.js"
+            }
+        }
+    },
+    "files": [
+        "dist"
+    ],
+    "sideEffects": false,
+    "engines": {
+        "node": ">=14.0.0"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
     "scripts": {
-        "test": "jest"
+        "build:cjs": "tsc -p tsconfig.json",
+        "build:esm": "tsc -p tsconfig.esm.json",
+        "build": "npm run build:cjs && npm run build:esm",
+        "prepare": "npm run build",
+        "test": "jest",
+        "prepublishOnly": "npm run test && npm run build"
     },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/garylin0969/chinese-number-format.git"
     },
+    "homepage": "https://github.com/garylin0969/chinese-number-format#readme",
+    "bugs": {
+        "url": "https://github.com/garylin0969/chinese-number-format/issues"
+    },
     "keywords": [
-        "台灣",
-        "中華民國",
-        "中国",
-        "中华人民共和国",
-        "Taiwan",
-        "China",
-        "數字轉中文",
-        "数字转中文",
-        "中文轉數字",
-        "中文转数字",
-        "數字轉換",
-        "数字转换",
-        "number to chinese",
-        "chinese to number",
+        "chinese",
+        "number",
+        "format",
+        "currency",
+        "finance",
+        "upper-case",
         "traditional",
         "simplified",
-        "chinese numerals",
-        "chinese numbers",
-        "number",
-        "numeral",
-        "format",
-        "formatter",
-        "conversion",
-        "converter",
-        "chinese month",
-        "lunar month",
-        "traditional month"
+        "convert",
+        "money",
+        "fraction",
+        "date",
+        "typescript",
+        "javascript",
+        "vue",
+        "react",
+        "nextjs",
+        "angular",
+        "數字轉中文",
+        "大寫金額",
+        "貨幣格式化",
+        "年份轉換",
+        "數字縮寫"
     ],
     "author": {
         "name": "GaryLin",
